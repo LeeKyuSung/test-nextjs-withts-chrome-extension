@@ -1,0 +1,20 @@
+{
+  "name": "NextJS, Typescript Chrome Extension Test",
+  "description": "just for test",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "favicon.ico"
+  },
+  "background": {
+    "service_worker": "extension/background.js"
+  },
+  "content_scripts": [
+    {
+      "js": ["extension/content.js"],
+      "matches": ["https://*/*"]
+    }
+  ]
+}

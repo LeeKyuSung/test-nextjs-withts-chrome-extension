@@ -145,6 +145,11 @@ module.exports = nextConfig;
 
 ## References
 
+- https://birdeatsbug.com/blog/build-a-chrome-extension-in-next-js-and-notion-api
+- https://betterprogramming.pub/creating-chrome-extensions-with-typescript-914873467b65
+- https://css-tricks.com/nextjs-chrome-extension-starter/
+- https://christianpenrod.com/blog/developing-browser-extensions-with-nextjs/
+
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

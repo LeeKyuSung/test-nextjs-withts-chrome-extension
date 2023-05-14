@@ -27,8 +27,6 @@
 - create `src/extensions/content.ts`
   - `console.log("contents test script");`
 - create `manifest.json`
-<details>
-  <summary> mainfest.json </summary>
 
 ```
 {
@@ -53,11 +51,7 @@
 }
 ```
 
-</details>
-
 - create `webpack.config.js`
-<details>
-  <summary> webpack.config.js </summary>
 
 ```
 const path = require("path");
@@ -92,8 +86,6 @@ module.exports = {
 };
 ```
 
-</details>
-
 - modify `package.json`
   - `build` : run `build:next` and then run `build:webpack`
   - `build:next` : build nextjs project and export to `./out` directory. then move `./out/_next` to `./out/next`.
@@ -111,9 +103,6 @@ module.exports = {
   ...
 }
 ```
-
-<details>
-  <summary> trouble shootings (depends on version) </summary>
 
 - modify `next.config.js` (add `images.unoptimized=true`)
 
@@ -134,14 +123,57 @@ module.exports = nextConfig;
   - modify `compilerOptions.noEmit` to `false`
 
 - modify `src/styles/globals.css`
-  - add `html, body { max-width: 500 }`
 
-</details>
+  - add `html, body { max-width: 500 }`
 
 - `npm run build`
 - import `out` directory to chrome://extensions
 
 ## For development
+
+- `npm run dev` is not usable for chrome extension development.
+- use `npm-watch` for development
+
+- `npm install --save-dev npm-watch`
+- modify `package.json`
+
+```
+{
+  ...
+  "scripts": {
+    "watch": "npm-watch",
+    ...
+  },
+  ...
+  "watch": {
+    "build": {
+      "patterns": [
+        "manifest.json",
+        "src/extensions/**",
+        "src/styles/**",
+        "src/pages/**",
+        "public/**",
+        "next.config.js",
+        "tsconfig.json",
+        "webpack.config.js"
+      ],
+      "ignore": [
+        "out",
+        "node_modules",
+        ".next",
+        ".vscode"
+      ],
+      "extensions": [
+        "js",
+        "json"
+      ]
+    }
+  }
+}
+```
+
+- `npm run watch`
+- then automatically build when files are changed.
 
 ## References
 
